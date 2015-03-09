@@ -38,7 +38,7 @@ function mainMenu(){
 
 function handleInput(){
 		choice = sget("Enter your choice...").trim();
-		var isNumber = checkIfNumber(numbers[i]);
+		var isNumber = checkIfNumber(choice);
 		//console.log(isNumber);
 		if (!isNumber){
 			console.log("Please input a number.");
