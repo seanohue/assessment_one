@@ -138,7 +138,7 @@ function playWithAnimal(){
 		hunger+=20;
 		training+=5;
 	}
-
+	turns++;
 	toContinue();
 }
 
