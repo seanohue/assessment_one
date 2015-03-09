@@ -27,7 +27,7 @@ function averageTemp(){
 	for (var i=0;i<dailyTemps.length; i++)
 		total+=dailyTemps[i];
 	console.log("Sum: "+total);
-	var average = total/(dailyTemps.length+1)
+	var average = total/(dailyTemps.length)
 	return average; 
 
 }
