@@ -1,7 +1,7 @@
 var sget = require('sget');
 var clear = require('clear');
 var name = null;
-var hunger = 100;
+var hunger = 50;
 var happiness = 50;
 var trained = 0;
 var score = 0;
@@ -66,15 +66,83 @@ function checkIfNumber(input){
 		return false;
 }
 
-function feedAnimal(){}
+function goToChoice(choice){
+	console.log("You chose option #"+choice);
+	switch(choice){
+		case 1:
+			feedAnimal();
+			break;
+		case 2:
+			playWithAnimal();
+			break;
+		case 3:
+			trainAnimal();
+			break;
+		case 4:
+			showAnimal();
+			break;
+		case 5:
+			retire();
+			break;
+		default:
+			mainMenu();
+	}
 
-function playWithAnimal(){}
+}
 
-function trainAnimal(){}
+function toContinue(){
+	var input = sget("Press enter to continue...");
+}
 
-function showAnimal(){}
+function feedAnimal(){
+	clear();
+	console.log("You bring a bucket of tiny shrimp to "+name+"'s habitat...");
 
-function displayScore(){}
+
+
+	toContinue();
+}
+
+function playWithAnimal(){
+	clear();
+	console.log("You toss a rubber ball over "+name+"'s head...");
+
+	toContinue();
+}
+
+function trainAnimal(){
+	clear();
+	console.log("You attempt to teach "+name+" some new tricks...");
+
+	toContinue();
+}
+
+function showAnimal(){
+	clear();
+	console.log("You sign "+name+" up for tonight's performance...");
+
+	toContinue();
+}
+
+function retire(){
+	clear();
+	console.log("You decide that zookeeping is not for you anymore...");
+	displayScore();
+	process.exit(0);
+}
+
+function displayScore(){
+	console.log("Your zookeeper score is: "+score);
+	console.log(name+"'s happiness level is: "+happiness);
+	console.log(name+"'s hunger level is: "+hunger);
+	console.log(name+"'s training level is: "+training);
+	var grandScore = score+happiness+training-hunger;
+	console.log("===============================");
+	console.log("YOUR GRAND TOTAL SCORE IS: "+grandScore);
+	console.log("THANK YOU FOR PLAYING!");
+	console.log("===============================");
+	toContinue();
+}
 
 clear();
 console.log("==============================");
