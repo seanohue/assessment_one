@@ -4,7 +4,7 @@ var name = null;
 var hunger = 50;
 var happiness = 50;
 var training = 0;
-var score = 0;
+
 var turns = 1;
 
 
@@ -181,7 +181,7 @@ function showAnimal(){
 	clear();
 	console.log("You sign "+name+" up for tonight's performance...");
 	if (training>=75 && hunger<50 && happiness>2){
-		console.log(name+"puts on the show of a lifetime! Incredible!");
+		console.log(name+" puts on the show of a lifetime! Incredible!");
 		console.log("You are so proud of "+name+" and they are very happy, though exhausted.");
 		hunger+=35;
 		happiness+=50;
@@ -227,7 +227,7 @@ function retire(){
 }
 
 function displayScore(){
-	console.log("Your zookeeper score is: "+score);
+	
 	console.log(name+"'s happiness level is: "+happiness);
 	console.log(name+"'s hunger level is: "+hunger);
 	console.log(name+"'s training level is: "+training);
