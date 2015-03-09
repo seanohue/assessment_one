@@ -3,7 +3,7 @@ var clear = require('clear');
 var name = null;
 var hunger = 50;
 var happiness = 50;
-var trained = 0;
+var training = 0;
 var score = 0;
 var turns = 1;
 
@@ -46,7 +46,7 @@ function mainMenu(){
 }
 
 function handleInput(){
-		choice = sget("Enter your choice...").trim();
+		choice = parseInt(sget("Enter your choice...").trim());
 		var isNumber = checkIfNumber(choice);
 		//console.log(isNumber);
 		if (!isNumber){
