@@ -21,13 +21,15 @@ function handleInput(){
 	}
 
 function averageTemp(){
+	var total = 0;
 	for (var i=0;i<dailyTemps.length; i++)
-		var total+=dailyTemps[i];
-	
-
-	return total/dailyTemps.length; 
+		total+=dailyTemps[i];
+	var average = total/(dailyTemps.length+1)
+	return average; 
 
 }
 
 console.log("Enter a number for the temperature of each day.");
 console.log("We will then find the average for the past week.");
+handleInput();
+console.log("The average temperature for the past week is: "+averageTemp()+" degrees.");
