@@ -2,7 +2,9 @@ var sget = require('sget');
 var numbers = new Array(3);
 
 function sortNumbers(){
-
+	numbers = numbers.sort(function(a, b){
+		return b - a;
+	});
 }
 
 function checkIfNumber(input){
@@ -24,12 +26,17 @@ function handleInput(){
 		}
 	}
 	
-	console.log(numbers); //for debugging
+	//console.log(numbers); //for debugging
 }
 
 function displayNumbers(){
-
+	console.log("Your sorted numbers are as follows: " + numbers);
 }
 
 console.log("Enter three numbers and we will gladly sort them from largest to smallest!");
+
 handleInput();
+
+sortNumbers();
+
+displayNumbers();
