@@ -12,7 +12,8 @@ function handleInput(){
 		
 		dailyTemps[i] = sget("Enter the temperature for day "+i+" please: ").trim();
 		var isNumber = checkIfNumber(dailyTemps[i]);
-		console.log(isNumber);
+		//console.log(isNumber);
+
 		if (!isNumber){
 			i--;
 			console.log("Please input a number.");

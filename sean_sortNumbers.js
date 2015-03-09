@@ -19,7 +19,7 @@ function handleInput(){
 		
 		numbers[i] = sget("Enter number: ").trim();
 		var isNumber = checkIfNumber(numbers[i]);
-		console.log(isNumber);
+		//console.log(isNumber);
 		if (!isNumber){
 			i--;
 			console.log("Please input a number.");
