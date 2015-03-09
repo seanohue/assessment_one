@@ -1,4 +1,5 @@
 var sget = require('sget');
+var clear = require('clear');
 var name = null;
 var hunger = 100;
 var happiness = 50;
@@ -13,26 +14,34 @@ function nameAnimal(){
 	console.log("You have been given a baby platypus to show your abilities.")
 	console.log("What would you like to name your platypus?")
 	name = sget("Please give it a cute name:").trim();
+	clear();
 
 }
 
 function mainMenu(){
 	
-	var validInput=false;
-	while (!validInput){
-	console.log("==============================");
-	console.log("It is day "+turns+" for you and your platypus, "+name+".");
-	console.log("What would you like to do?");
-	console.log("(Please enter a number...)");
-	console.log("==============================");
-	console.log("1) Feed "+name+" some delicious prawns.");
-	console.log("2) Play fetch with "+name+".");
-	console.log("3) Train "+name+" to do cool platypus tricks.");
-	console.log("4) Sign "+name+" up for the Greatest Platypus Show On Earth.");
-	console.log("==============================");
+	var endLoop=false;
+	while (!endLoop){
+		
+		console.log("==============================");
+		console.log("It is day #"+turns+" for you and your platypus, "+name+".");
+		console.log("What would you like to do?");
+		console.log("(Please enter a number...)");
+		console.log("==============================");
+		console.log("1) Feed "+name+" some delicious prawns.");
+		console.log("2) Play fetch with "+name+".");
+		console.log("3) Train "+name+" to do cool platypus tricks.");
+		console.log("4) Sign "+name+" up for the Greatest Platypus Show On Earth.");
+		console.log("5) Retire from zookeeping.");
+		console.log("==============================");
 
-	var choice = handleInput();
-	
+		var choice = handleInput();
+		
+		if(choice > 0 && choice < 6){
+			goToChoice(choice);
+		}
+		else
+			console.log("That is not a valid choice. Try again.");
 	}
 }
 
@@ -44,8 +53,10 @@ function handleInput(){
 			console.log("Please input a number.");
 			handleInput();
 		}
-		else
+		else{
+			clear();
 			return choice;
+		}
 	}
 
 function checkIfNumber(input){
@@ -65,6 +76,7 @@ function showAnimal(){}
 
 function displayScore(){}
 
+clear();
 console.log("==============================");
 console.log("|    Welcome to GAMMA ZOO    |");
 console.log("|  Home of the Platypus Den  |");
