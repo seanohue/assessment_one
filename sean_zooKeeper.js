@@ -97,9 +97,25 @@ function toContinue(){
 function feedAnimal(){
 	clear();
 	console.log("You bring a bucket of tiny shrimp to "+name+"'s habitat...");
-
-
-
+	if (hunger>10){
+		console.log(name+"seems pretty hungry... they chow down on the prawns and dance a delightful platypus jig.");
+		hunger-=20;
+		happiness+=20;
+		training-=1;
+	}
+	else if (hunger>0){
+		console.log(name+" seems pretty content, but they eat a few prawns anyway... now they're stuffed!");
+		console.log(name+" decides to take a nap...");
+		hunger-=10;
+		training-=5;
+	}
+	else{
+		console.log(name+" is stuffed and refuses to eat. You forcefeed them anyway, cruelly dumping prawns down their throat.");
+		console.log(name+" looks sick and can hardly move. Poor thing!");
+		hunger-=1;
+		training-=5;
+		happiness-=20;
+	}
 	toContinue();
 }
 
