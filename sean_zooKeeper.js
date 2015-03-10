@@ -1,6 +1,13 @@
+/*
+Change /n to console.log.
+Change platypus into animal object to allow for multiple animals.
+Make a function for changing/incrementing attributes of animal -- easier to make objects.
+*/
 var sget = require('sget');
 var clear = require('clear');
+
 var name = null;
+
 var hunger = 50;
 var happiness = 50;
 var training = 0;
@@ -49,21 +56,22 @@ function handleInput(){
 		choice = parseInt(sget("Enter your choice...").trim());
 		var isNumber = checkIfNumber(choice);
 		//console.log(isNumber);
-		if (!isNumber){
-			console.log("Please input a number.");
-			handleInput();
-		}
-		else{
+		if (isNumber){
 			clear();
 			return choice;
+		}
+		else{
+			console.log("Please input a number.");
+			handleInput();
+			
 		}
 	}
 
 function checkIfNumber(input){
-	if (!isNaN(input))
-		return true;
-	else
+	if (isNaN(input))
 		return false;
+	else
+		return true;
 }
 
 function goToChoice(choice){
@@ -231,7 +239,7 @@ function displayScore(){
 	console.log(name+"'s happiness level is: "+happiness);
 	console.log(name+"'s hunger level is: "+hunger);
 	console.log(name+"'s training level is: "+training);
-	var grandScore = score+happiness+training-hunger;
+	var grandScore = happiness+training-hunger;
 	console.log("===============================");
 	console.log("YOUR GRAND TOTAL SCORE IS: "+grandScore);
 	console.log("THANK YOU FOR PLAYING!");
