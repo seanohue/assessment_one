@@ -18,7 +18,7 @@ function checkPasswordStrength(){
 	var numbers = /\d+/;
 	var bang = /[!]+/;
 
-	if ((bang.test(password) === true) || (numbers.test(password) === true)){
+	if ((bang.test(password) === true) || (numbers.test(password) === true) || (password != password.toLowerCase())){
 		console.log("Your password meets our strength requirements.");
 		return true;		
 	}
