@@ -3,6 +3,8 @@ CHANGELOG
 3-10:
 Added animal object. Changed references to variables to match properties of object.
 Got rid of score.
+Created player object.
+Changed instances of 'Platypus' to 'animals.species'
 
 TO DO
 Change multiple logs to linebreaks.
@@ -18,9 +20,17 @@ var animal = {
 	name: null,
 	hunger: 50,
 	happiness: 50,
-	training: 0
-	cost: 100
+	training: 0,
+	cost: 100,
+	tricks:0
 };
+
+var player = {
+//	score: 				How would I add up all of the scores of all of the animals? If there were more than one...
+	name: null,
+	turns: 1,
+	money: 0
+}
 
 var sget = require('sget');
 var clear = require('clear');
@@ -31,11 +41,17 @@ var turns = 1;
 function nameAnimal(){
 
 	console.log("It is your first day on the job as an Apprentice Zookeeper.");
-	console.log("You have been given a baby platypus to show your abilities.")
-	console.log("What would you like to name your platypus?")
+	console.log("You have been given a baby "+animal.species+" to show your abilities.");
+	console.log("What would you like to name your "+animal.species+"?");
 	animal.name = sget("Please give it a cute name:").trim();
 	clear();
+	namePlayer();
+}
 
+function namePlayer(){
+
+	player.name = sget("Please enter your name:").trim();
+	clear();
 }
 
 function mainMenu(){
@@ -50,8 +66,8 @@ function mainMenu(){
 		console.log("==============================");
 		console.log("1) Feed "+animal.name+" some delicious prawns.");
 		console.log("2) Play fetch with "+animal.name+".");
-		console.log("3) Train "+animal.name+" to do cool platypus tricks.");
-		console.log("4) Sign "+animal.name+" up for the Greatest Platypus Show On Earth.");
+		console.log("3) Train "+animal.name+" to do cool "+animal.species+" tricks.");
+		console.log("4) Sign "+animal.name+" up for the Greatest"+animal.species+"Show On Earth.");
 		console.log("5) Retire from zookeeping.");
 		console.log("==============================");
 
@@ -183,7 +199,7 @@ function trainAnimal(){
 	}
 	else if (animal.happiness<35){
 		console.log(animal.name+" tries really hard, but they seem a bit off.");
-		console.log("Your animal.training only seems somewhat effective. Platypi need fun too!");
+		console.log("Your training only seems somewhat effective. "+animal.name+" needs to have some fun!");
 		animal.hunger+=20;
 		animal.happiness-=10;
 		animal.training+=10;
@@ -192,7 +208,8 @@ function trainAnimal(){
 		console.log(animal.name+" has learned a new trick! They love showing off.\nHow cute.");
 		animal.hunger+=25;
 		animal.happiness+=10;
-		animal.training+=25
+		animal.training+=25;
+		animal.tricks++
 	}
 	turns++;
 	toContinue();
@@ -201,14 +218,14 @@ function trainAnimal(){
 function showAnimal(){
 	clear();
 	console.log("You sign "+animal.name+" up for tonight's performance...");
-	if (animal.training>=75 && animal.hunger<50 && animal.happiness>2){
+	if (animal.training>=75 && animal.hunger<50 && animal.happiness>2 && animal.tricks>3){
 		console.log(animal.name+" puts on the show of a lifetime! Incredible!");
 		console.log("You are so proud of "+animal.name+" and they are very happy, though exhausted.");
 		animal.hunger+=35;
 		animal.happiness+=50;
 		animal.training+=5;
 	}
-	else if (animal.training>=50 && animal.hunger<50 && animal.happiness>2){
+	else if (animal.training>=50 && animal.hunger<50 && animal.happiness>2 && animal.tricks>1){
 		console.log(animal.name+" puts on a pretty good show, with only a few mistakes.");
 		console.log("They seem happy but tired.");
 		animal.hunger+=30;
@@ -217,7 +234,7 @@ function showAnimal(){
 	}
 	else if (animal.training>=25 && animal.hunger<50 && animal.happiness>25){
 		console.log(animal.name+" makes several rookie mistakes...");
-		console.log("You never thought a platypus could look embarrassed, but you'd be wrong...");
+		console.log("You never thought a "+animal.species+" could look embarrassed, but you'd be wrong...");
 		console.log("Train harder next time!");
 		animal.hunger+=30;
 		animal.happiness-=5;
@@ -236,7 +253,7 @@ function showAnimal(){
 		animal.training-=5;
 	}
 	
-	turns++;
+	player.turns++;
 	toContinue();
 }
 
@@ -249,10 +266,11 @@ function retire(){
 
 function displayScore(){
 	
-	console.log(animal.name+"'s animal.happiness level is: "+animal.happiness);
-	console.log(animal.name+"'s animal.hunger level is: "+animal.hunger);
-	console.log(animal.name+"'s animal.training level is: "+animal.training);
-	var grandScore = animal.happiness+animal.training-animal.hunger;
+	console.log(animal.name+"'s happiness level is: "+animal.happiness);
+	console.log(animal.name+"'s hunger level is: "+animal.hunger);
+	console.log(animal.name+"'s training level is: "+animal.training);
+	console.log(animal.name+" has learned "+animal.tricks+" tricks.");
+	var grandScore = (animal.happiness+animal.training-animal.hunger)*animal.tricks;
 	console.log("===============================");
 	console.log("YOUR GRAND TOTAL SCORE IS: "+grandScore);
 	console.log("THANK YOU FOR PLAYING!");
