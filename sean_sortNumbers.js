@@ -8,10 +8,10 @@ function sortNumbers(){
 }
 
 function checkIfNumber(input){
-	if (!isNaN(input))
-		return true;
-	else
+	if (isNaN(input))
 		return false;
+	else
+		return true;
 }
 
 function handleInput(){
