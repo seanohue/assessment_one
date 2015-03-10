@@ -67,7 +67,7 @@ function mainMenu(){
 		console.log("1) Feed "+animal.name+" some delicious prawns.");
 		console.log("2) Play fetch with "+animal.name+".");
 		console.log("3) Train "+animal.name+" to do cool "+animal.species+" tricks.");
-		console.log("4) Sign "+animal.name+" up for the Greatest"+animal.species+"Show On Earth.");
+		console.log("4) Sign "+animal.name+" up for the Greatest "+animal.species+" Show On Earth.");
 		console.log("5) Retire from zookeeping.");
 		console.log("==============================");
 
@@ -135,7 +135,7 @@ function feedAnimal(){
 	clear();
 	console.log("You bring a bucket of tiny shrimp to "+animal.name+"'s habitat...");
 	if (animal.hunger>10){
-		console.log(animal.name+" seems pretty hungry... they chow down on the prawns and dance a delightful platypus jig.");
+		console.log(animal.name+" seems pretty hungry... they chow down on the prawns and dance a delightful "+animal.species+" jig.");
 		animal.hunger-=20;
 		animal.happiness+=20;
 		animal.training-=1;
@@ -272,7 +272,7 @@ function displayScore(){
 	console.log(animal.name+" has learned "+animal.tricks+" tricks.");
 	var grandScore = (animal.happiness+animal.training-animal.hunger)*animal.tricks;
 	console.log("===============================");
-	console.log("YOUR GRAND TOTAL SCORE IS: "+grandScore);
+	console.log(player.name.toUpperCase()+"'S GRAND TOTAL SCORE IS: "+grandScore);
 	console.log("THANK YOU FOR PLAYING!");
 	console.log("===============================");
 	toContinue();
