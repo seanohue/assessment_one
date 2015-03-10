@@ -60,7 +60,7 @@ function mainMenu(){
 	while (!endLoop){
 		
 		console.log("==============================");
-		console.log("It is day #"+turns+" for you and your platypus, "+animal.name+".");
+		console.log("It is day #"+turns+" for you and your "+animal.species+", "+animal.name+".");
 		console.log("What would you like to do?");
 		console.log("(Please enter a number...)");
 		console.log("==============================");
